@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  mssql:
+    container_name: mssql_container_m1
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    ports:
+      - 1433:1433
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+    environment:
+      - ACCEPT_EULA=Y
+#set password for SA user
+      - SA_PASSWORD=mssql1Ipw
+      - MSSQL_PID=Developer

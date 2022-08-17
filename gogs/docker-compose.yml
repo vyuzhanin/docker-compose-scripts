@@ -1,0 +1,28 @@
+version: '3.9'
+ 
+services:
+    gogs:
+        image: gogs/gogs
+        container_name: gogs_container
+        ports:
+            - "127.0.0.1:3000:3000"
+            - "127.0.0.1:10022:22"
+        volumes:
+            - ./data:/data
+            - ./bak:/backup
+        environment:
+            - TZ="Europe/London"
+            - RUN_CROND="true"
+            - BACKUP_INTERVAL="3h"
+            - BACKUP_RETENTION="30d"
+        restart: unless-stopped
+        networks:
+            - gogs
+        logging:
+            # keep 3 log files, maximum size of 10m (default is unlimited)
+            options:
+                max-size: "10m"
+                max-file: "3"
+networks:
+    gogs:
+        driver: bridge

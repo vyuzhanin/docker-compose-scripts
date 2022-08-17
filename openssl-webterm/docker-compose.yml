@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  openssl-webterm:
+    container_name: openssl_webterm_container
+    build: https://github.com/cryptool-org/openssl-webterm.git
+    image: openssl-webterm
+    ports:
+      - 4300:80
