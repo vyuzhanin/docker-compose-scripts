@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - WEBUI_PORT=8585
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      #binding webui to 8585 port
+      - 8585:8585
+    restart: unless-stopped
