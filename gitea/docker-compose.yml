@@ -11,6 +11,8 @@ services:
             - ./data:/data
             - ./bak:/backup
         environment:
+            - USER_UID=1000
+            - USER_GID=1000
             - TZ="Europe/London"
             - RUN_CROND="true"
             - BACKUP_INTERVAL="3h"
