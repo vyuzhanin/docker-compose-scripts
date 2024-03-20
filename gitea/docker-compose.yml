@@ -2,7 +2,7 @@ version: '3.9'
  
 services:
     gogs:
-        image: gitea/gitea
+        image: gitea/gitea:latest
         container_name: gitea_container
         ports:
             - "127.0.0.1:3000:3000"
@@ -11,12 +11,10 @@ services:
             - ./data:/data
             - ./bak:/backup
         environment:
-            - USER_UID=1000
-            - USER_GID=1000
             - TZ="Europe/London"
             - RUN_CROND="true"
-            - BACKUP_INTERVAL="3h"
-            - BACKUP_RETENTION="30d"
+            - BACKUP_INTERVAL="5m"
+            - BACKUP_RETENTION="5m"
         restart: unless-stopped
         networks:
             - gitea

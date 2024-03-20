@@ -11,6 +11,6 @@ services:
       - ./log:/var/opt/mssql/log
     environment:
       - ACCEPT_EULA=Y
-#set password for SA user
+      #set password for SA user
       - SA_PASSWORD=mssql1Ipw
       - MSSQL_PID=Developer
