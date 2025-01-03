@@ -3,7 +3,8 @@ version: '3.9'
 services:
   mssql:
     container_name: mssql_container_m1
-    image: mcr.microsoft.com/azure-sql-edge:latest
+    image: mcr.microsoft.com/azure-sql-edge:1.0.7
+    user: root
     ports:
       - 1433:1433
     volumes:
